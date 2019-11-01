@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Header from "./component/header";
 import Search from "./component/search";
 import WeatherListDays from "./component/weatherListDays";
-import {dividedWeatherByDays} from './component/common/dividedWeatherByDays'
+import { dividedWeatherByDays } from "./component/common/dividedWeatherByDays";
 import "./App.css";
 import Jumbotron from "./component/jumbotron";
-import Footer from "./component/footer";
+// import Footer from "./component/footer";
 
 class App extends Component {
   state = {
@@ -14,7 +14,7 @@ class App extends Component {
       source: "http://api.openweathermap.org/data/2.5/forecast?q="
     },
     cityData: [],
-    selectedDay: {isSelected: false},
+    selectedDay: { isSelected: false },
     cityName: "",
     country: "",
     isSelected: false
@@ -38,10 +38,10 @@ class App extends Component {
 
   handleDaySelected = dayName => {
     if (dayName) {
-      const days = [...this.state.cityData]
-      const selectedDay = days.filter(day => day.name === dayName )
+      const days = [...this.state.cityData];
+      const selectedDay = days.filter(day => day.name === dayName);
       selectedDay.isSelected = true;
-      this.setState({selectedDay, isSelected: true});
+      this.setState({ selectedDay, isSelected: true });
     }
   };
 

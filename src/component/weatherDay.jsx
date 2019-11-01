@@ -1,5 +1,6 @@
 import React from "react";
 import Table from "./table";
+import { temperatureCalculation } from "./common/temperatureController";
 import "./weatherDay.css";
 
 const WeatherDay = ({
@@ -11,8 +12,9 @@ const WeatherDay = ({
   dayName,
   isSelected
 }) => {
-  const temperature = info.dayData[0].main.temp;
-  const date = info.dayData[0].dt_txt.substring(0, 10)
+  const minTemperature = temperatureCalculation(info.dayData, "min");
+  const maxTemperature = temperatureCalculation(info.dayData, "max");
+  const date = info.dayData[0].dt_txt.substring(0, 10);
   const weatherIcon = info.dayData[0].weather[0].icon.replace(/.$/, "d");
   let classes = "";
 
@@ -33,10 +35,8 @@ const WeatherDay = ({
         <p>
           Weather in <b>{cityName}</b>, {country}
         </p>
-        <p className="dateList">
-          {date}
-        </p>
-        <h3 className="weather-widget__temperature">
+        <p className="dateList">{date}</p>
+        <h3 className="weather-widget__temperature text-center">
           <img
             className="weather-widget__img"
             src={"https://openweathermap.org/img/w/" + weatherIcon + ".png"}
@@ -44,8 +44,11 @@ const WeatherDay = ({
             width="100"
             height="90"
           />
-          {Math.round(temperature)} °C
         </h3>
+        <p>
+          Min: <b>{Math.round(minTemperature)} °C</b>&nbsp; Max:{" "}
+          <b>{Math.round(maxTemperature)} °C</b>
+        </p>
         <Table info={info} />
       </div>
     </div>

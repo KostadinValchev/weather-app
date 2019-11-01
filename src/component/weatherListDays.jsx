@@ -3,7 +3,6 @@ import WeatherDay from "./weatherDay";
 import CurrentDay from "./selectedDay";
  
 const WeatherListDays = ({ data, cityName, country, selectedDay, onDaySelected }) => {
-  console.log(data)
   return ( 
   <div
     className="container"
