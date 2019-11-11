@@ -1,9 +1,9 @@
 import React from "react";
-import Table from "./table";
-import { temperatureCalculation } from "./common/temperatureController";
-import "./weatherDay.css";
+import MainTableForecast from "../common/table/mainTableForecast";
+import { temperatureCalculation } from "../../utility/temperatureController";
+import "./dailyForecast.css";
 
-const WeatherDay = ({
+const DailyForecast = ({
   info,
   cityName,
   country,
@@ -49,10 +49,10 @@ const WeatherDay = ({
           Min: <b>{Math.round(minTemperature)} °C</b>&nbsp; Max:{" "}
           <b>{Math.round(maxTemperature)} °C</b>
         </p>
-        <Table info={info} />
+        <MainTableForecast info={info} />
       </div>
     </div>
   );
 };
 
-export default WeatherDay;
+export default DailyForecast;

@@ -1,10 +1,10 @@
 import React from "react";
 
-const Table = ({ info }) => {
+const MainTableForecast = ({ info }) => {
   const data = info.dayData[0];
-  
+
   return (
-    <table className="table table-striped" style={{height: 240+"px"}}>
+    <table className="table table-striped" style={{ height: 240 + "px" }}>
       <tbody>
         <tr>
           <td>Wind</td>
@@ -27,4 +27,4 @@ const Table = ({ info }) => {
   );
 };
 
-export default Table;
+export default MainTableForecast;
