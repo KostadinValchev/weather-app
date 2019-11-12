@@ -1,17 +1,19 @@
 import React from "react";
+import { metersPerSecond } from "./constants";
+import { degreesCelsius } from "../../../globalConstants";
+import { buildingAnUrlImageString } from "../../../utility/stringBuilder";
 
 const TableBody = ({ forecastByHours }) => {
   return (
     <tbody className="text-center">
       <tr>
         {forecastByHours.map(hour => {
-          const icon = hour.weather[0].icon.replace(/.$/, "d");
           return (
             <td key={hour.dt}>
               <img
                 className="weather-widget__img"
-                src={"https://openweathermap.org/img/w/" + icon + ".png"}
-                alt="Weather London , GB"
+                src={buildingAnUrlImageString(hour.weather[0].icon)}
+                alt="Weather"
                 width="100"
                 height="90"
               />
@@ -22,7 +24,9 @@ const TableBody = ({ forecastByHours }) => {
       <tr>
         {forecastByHours.map(hour => (
           <td key={hour.dt}>
-            <h2>{Math.round(hour.main.temp)} °C</h2>
+            <h2>
+              {Math.round(hour.main.temp)} {degreesCelsius}
+            </h2>
           </td>
         ))}
       </tr>
@@ -33,7 +37,9 @@ const TableBody = ({ forecastByHours }) => {
       </tr>
       <tr>
         {forecastByHours.map(hour => (
-          <td key={hour.dt}>{hour.wind.speed} m/s</td>
+          <td key={hour.dt}>
+            {hour.wind.speed} {metersPerSecond}
+          </td>
         ))}
       </tr>
     </tbody>

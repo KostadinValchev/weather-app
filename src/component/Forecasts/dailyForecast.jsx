@@ -1,6 +1,9 @@
 import React from "react";
 import MainTableForecast from "../common/table/mainTableForecast";
 import { temperatureCalculation } from "../../utility/temperatureController";
+import { buildingAnUrlImageString } from "../../utility/stringBuilder";
+import { selected } from "./constants";
+import { min, max, degreesCelsius } from "../../globalConstants";
 import "./dailyForecast.css";
 
 const DailyForecast = ({
@@ -12,15 +15,14 @@ const DailyForecast = ({
   dayName,
   isSelected
 }) => {
-  const minTemperature = temperatureCalculation(info.dayData, "min");
-  const maxTemperature = temperatureCalculation(info.dayData, "max");
+  const minTemperature = temperatureCalculation(info.dayData, min);
+  const maxTemperature = temperatureCalculation(info.dayData, max);
   const date = info.dayData[0].dt_txt.substring(0, 10);
-  const weatherIcon = info.dayData[0].weather[0].icon.replace(/.$/, "d");
   let classes = "";
 
   if (isSelected) {
     if (info.name !== dayName) {
-      classes = " selected";
+      classes = selected;
     }
   }
 
@@ -39,15 +41,21 @@ const DailyForecast = ({
         <h3 className="weather-widget__temperature text-center">
           <img
             className="weather-widget__img"
-            src={"https://openweathermap.org/img/w/" + weatherIcon + ".png"}
-            alt="Weather London , GB"
+            src={buildingAnUrlImageString(info.dayData[0].weather[0].icon)}
+            alt="Weather"
             width="100"
             height="90"
           />
         </h3>
         <p>
-          Min: <b>{Math.round(minTemperature)} °C</b>&nbsp; Max:{" "}
-          <b>{Math.round(maxTemperature)} °C</b>
+          Min:{" "}
+          <b>
+            {Math.round(minTemperature)} {degreesCelsius}
+          </b>
+          &nbsp; Max:{" "}
+          <b>
+            {Math.round(maxTemperature)} {degreesCelsius}
+          </b>
         </p>
         <MainTableForecast info={info} />
       </div>

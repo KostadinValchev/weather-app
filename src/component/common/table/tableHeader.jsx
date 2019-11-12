@@ -1,11 +1,11 @@
 import React from "react";
-
+import { correctDateExpression } from "../../../utility/stringBuilder";
 const TableHeader = ({ forecastByHours }) => {
   return (
     <thead className="text-center">
       <tr>
         {forecastByHours.map(h => (
-          <th key={h.dt_txt}>{h.dt_txt.substring(10, 16)}</th>
+          <th key={h.dt_txt}>{correctDateExpression(h.dt_txt)}</th>
         ))}
       </tr>
     </thead>

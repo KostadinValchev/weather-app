@@ -1,11 +1,11 @@
-import { app } from "./constants";
+import { app, unitsMetric } from "./constants";
 import { dividedWeatherByDays } from "../utility/dividedWeatherByDays";
 
 class WeatherProvider {
   getForecastWeather(city) {
     const { source, key } = app;
     if (city !== "") {
-      return fetch(source + city + "&units=metric" + key)
+      return fetch(source + city + unitsMetric + key)
         .then(resp => {
           return resp.json();
         })

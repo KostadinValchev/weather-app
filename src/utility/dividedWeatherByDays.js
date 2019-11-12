@@ -1,4 +1,4 @@
-import {getDayOfWeek} from './dateTimeProvider';
+import { getDayOfWeek } from "./dateTimeProvider";
 
 export function dividedWeatherByDays(data) {
   let day = getDayOfWeek(data[0].dt_txt);

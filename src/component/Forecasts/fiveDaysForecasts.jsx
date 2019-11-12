@@ -1,6 +1,7 @@
 import React from "react";
 import DailyForecast from "./dailyForecast";
 import HourlyForecast from "./hourlyForecast";
+import { percentage } from "../../globalConstants";
 
 const FiveDaysForecasts = ({
   data,
@@ -12,7 +13,10 @@ const FiveDaysForecasts = ({
   return (
     <div
       className="container"
-      style={{ marginTop: 5 + "%", marginBottom: 5 + "%" }}
+      style={{
+        marginTop: 5 + { percentage },
+        marginBottom: 5 + { percentage }
+      }}
     >
       <div className="row">
         {data.map((day, index) => (
