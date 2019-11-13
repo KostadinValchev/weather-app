@@ -1,12 +1,12 @@
 import React from "react";
-import { hectopascal, px } from "./constants";
+import { hectopascal } from "./constants";
 import { percentage } from "../../../globalConstants";
 
 const MainTableForecast = ({ info }) => {
   const data = info.dayData[0];
 
   return (
-    <table className="table table-striped" style={{ height: 240 + { px } }}>
+    <table className="table table-striped" style={{ height: 240 + "px" }}>
       <tbody>
         <tr>
           <td>Wind</td>

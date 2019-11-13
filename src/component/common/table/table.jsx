@@ -5,10 +5,10 @@ import { white } from "./constants";
 
 const Table = ({ forecastByHours }) => {
   return (
-    <div className="table-responsive" style={{ marginTop: "20px" }}>
+    <div className="table-responsive" style={{ backgroundColor: white, margin: "3%" }}>
       <table
         className="table table-bordered"
-        style={{ backgroundColor: { white } }}
+        style={{ backgroundColor: "#fff" }}
       >
         <TableHeader forecastByHours={forecastByHours} />
         <TableBody forecastByHours={forecastByHours} />
