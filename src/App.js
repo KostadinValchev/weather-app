@@ -4,6 +4,8 @@ import Search from "./component/Form/search";
 import FiveDaysForecasts from "./component/Forecasts/fiveDaysForecasts";
 import Jumbotron from "./component/jumbotron";
 import WeatherProvider from "./provider/weatherProvider";
+import LoginForm from "./component/Form/loginForm";
+import RegisterForm from "./component/Form/registerForm";
 import "./App.css";
 // import Footer from "./component/footer";
 
@@ -49,6 +51,8 @@ class App extends Component {
           selectedDay={this.state.selectedDay}
           isSelected={this.state.isSelected}
         />
+        {/* <LoginForm />
+        <RegisterForm /> */}
         {/* <Footer /> */}
       </React.Fragment>
     );
