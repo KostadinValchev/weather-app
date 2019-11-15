@@ -1,9 +1,11 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
   background: url(https://jk-spas-sky.com.ua/Media/dev/files/sky.jpg) no-repeat
     center center fixed;
   -webkit-background-size: cover;
@@ -12,34 +14,13 @@ body {
   background-size: cover;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 
-.col-2dot4,
-.col-sm-2dot4,
-.col-md-2dot4,
-.col-lg-2dot4,
-.col-xl-2dot4 {
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.col-2dot4 {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 20%;
-  flex: 0 0 20%;
-  max-width: 20%;
-}
-
-@media (min-width: 1140px) {
-  .col-xl-2dot4 {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 0 20%;
-    flex: 0 0 20%;
-    max-width: 20%;
-  }
+*,
+::after,
+::before {
+  box-sizing: border-box;
 }

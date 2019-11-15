@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Header from "./component/header";
+import Header from "./component/navigation/header";
 import Search from "./component/Form/search";
 import FiveDaysForecasts from "./component/Forecasts/fiveDaysForecasts";
-import Jumbotron from "./component/jumbotron";
 import WeatherProvider from "./provider/weatherProvider";
 import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
 import "./App.css";
-// import Footer from "./component/footer";
+import Navigation from "./component/navigation/navigation";
+import Footer from "./component/footer";
 
 class App extends Component {
   constructor() {
@@ -40,8 +40,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navigation />
         <Header />
-        <Jumbotron />
         <Search onSearchSubmit={this.handleSearchSubmit} />
         <FiveDaysForecasts
           data={this.state.cityData}
@@ -52,7 +52,7 @@ class App extends Component {
           isSelected={this.state.isSelected}
         />
         {/* <LoginForm />
-        <RegisterForm /> */}
+        <RegisterForm />  */}
         {/* <Footer /> */}
       </React.Fragment>
     );

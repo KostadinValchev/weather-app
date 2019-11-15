@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./search.css";
+import Form from "./form";
 
 class Search extends Component {
   state = {
@@ -9,29 +10,21 @@ class Search extends Component {
     this.setState({ searchField: event.target.value });
   };
   onSearchSubmit = () => {
+    console.log("search");
     this.props.onSearchSubmit(this.state.searchField);
     this.setState({ searchField: "" });
   };
   render() {
     return (
-      <React.Fragment>
-        <form className="form-inline mr-auto">
-          <input
-            type="text"
-            className="form-control m-2"
-            placeholder="Find city"
-            value={this.state.searchField}
-            onChange={this.onSearchChange}
-          />
-          <button
-            type="button"
-            className="btn btn-success btn-lg"
-            onClick={this.onSearchSubmit}
-          >
-            Search
-          </button>
-        </form>
-      </React.Fragment>
+      <form className="searchBox">
+        <input
+          type="text"
+          placeholder="Find city"
+          value={this.state.searchField}
+          onChange={this.onSearchChange}
+        />
+        <input type="button" value="Search" onClick={this.onSearchSubmit} />
+      </form>
     );
   }
 }

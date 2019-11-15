@@ -2,25 +2,34 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>
-          Album example is © Bootstrap, but please download and customize it for
-          yourself!
-        </p>
-        <p>
-          New to Bootstrap?{" "}
-          <a href="https://getbootstrap.com/">Visit the homepage</a> or read our{" "}
-          <a href="/docs/4.3/getting-started/introduction/">
-            getting started guide
-          </a>
-          .
-        </p>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24" />
+        <small class="d-block mb-3 text-muted">© 2017-2019</small>
       </div>
-    </footer>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#/">Cool stuff</a></li>
+
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#/">Resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#/">Team</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </footer>
   );
 };
 

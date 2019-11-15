@@ -7,16 +7,13 @@ class Form extends Component {
   state = {
     account: { username: "", password: "", confirmPassword: "" }
   };
-  componentDidUpdate() {
-    console.log(this.state.account);
-  }
-
-  handleRegister = user => {
+  
+  handleRegister = e => {
     console.log("Register!");
   };
 
-  handleSignIn = user => {
-    console.log("Login!");
+  handleSignIn = e => {
+    console.log("Login");
   };
 
   handleChange = ({ currentTarget: input }) => {
@@ -34,16 +31,16 @@ class Form extends Component {
       />
     );
   };
-  renderButton = (type, name, value) => {
+  renderButton = (type, name, value, action) => {
     return (
       <Button
         type={type}
         name={name}
         value={value}
-        onClick={this.handleRegister}
+        action={action}
+        onSubmit={action === "login" ? this.handleSignIn : this.handleRegister}
       />
     );
   };
 }
-
 export default Form;

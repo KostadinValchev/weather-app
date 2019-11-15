@@ -32,7 +32,7 @@ const DailyForecast = ({
       id="grow"
       onClick={() => onDaySelected(dayOfWeek)}
     >
-      <div className="card mb-4 shadow-sm">
+      <div className="card mb-4 shadow-sm" id="card">
         <h2>{info.name}</h2>
         <p>
           Weather in <b>{cityName}</b>, {country}

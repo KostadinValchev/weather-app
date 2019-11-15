@@ -1,0 +1,13 @@
+.header {
+    margin-top: 40px;
+  width: 900px;
+  height: 300px;
+  display: flex;
+  background: #212529;
+  color: white;
+  align-items: center;
+}
+
+p.lead {
+  font-weight: 900;
+}

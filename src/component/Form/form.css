@@ -10,6 +10,17 @@
   border-radius: 24px;
 }
 
+.searchBox {
+  display: flex;
+  margin: auto;
+  background: #212529;
+  padding: 20px;
+  width: 500px;
+  margin-bottom: 10%;
+  border-radius: 24px;
+  margin-bottom: 45px;
+}
+
 .box h1 {
   color: white;
   text-transform: uppercase;
@@ -17,7 +28,8 @@
 }
 
 .box input[type="text"],
-.box input[type="password"] {
+.box input[type="password"],
+.searchBox input[type="text"] {
   border: 0;
   background: none;
   margin: 20px auto;
@@ -30,20 +42,24 @@
   border-radius: 24px;
   transform: 0.25s;
 }
+.searchBox input[type="text"]:focus {
+  border-color: #2ecc71;
+}
 .box input[type="text"]:focus,
 .box input[type="password"]:focus {
   width: 280px;
   border-color: #2ecc71;
 }
 
-.box input[type="submit"] {
+.box input[type="button"],
+.searchBox input[type="button"] {
   border: 0;
   background: none;
   display: block;
   width: 120px;
   margin: 20px auto;
   text-align: center;
-  border: 2px solid #2ecc71;
+  border: 2px solid #28a745;
   padding: 14px 40px;
   outline: none;
   color: white;
@@ -51,6 +67,12 @@
   transform: 0.25s;
   cursor: pointer;
 }
-.box input[type="submit"]:hover {
+
+.searchBox input[type="text"],
+.searchBox input[type="button"] {
+  background: #212529;
+}
+.box input[type="button"]:hover,
+.searchBox input[type="button"]:hover {
   background: #2ecc71;
 }
