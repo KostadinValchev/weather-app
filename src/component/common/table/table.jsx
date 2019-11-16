@@ -7,7 +7,7 @@ const Table = ({ forecastByHours }) => {
   return (
     <div
       className="table-responsive"
-      style={{ backgroundColor: white, margin: "3%" }}
+      style={{ backgroundColor: white }}
     >
       <table
         className="table table-bordered"

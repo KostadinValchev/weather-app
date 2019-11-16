@@ -7,6 +7,7 @@ import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
 import "./App.css";
 import Navigation from "./component/navigation/navigation";
+import { Switch, Route } from "react-router-dom";
 import Footer from "./component/footer";
 
 class App extends Component {
@@ -41,18 +42,32 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navigation />
-        <Header />
-        <Search onSearchSubmit={this.handleSearchSubmit} />
-        <FiveDaysForecasts
-          data={this.state.cityData}
-          cityName={this.state.cityName}
-          country={this.state.country}
-          onDaySelected={this.handleDaySelected}
-          selectedDay={this.state.selectedDay}
-          isSelected={this.state.isSelected}
-        />
-        {/* <LoginForm />
-        <RegisterForm />  */}
+        <Switch>
+          <Route path="/signin" render={props => <LoginForm {...props} />} />
+          <Route
+            path="/register"
+            render={props => <RegisterForm {...props} />}
+          />
+          <Route
+            path="/"
+            exact
+            render={props => (
+              <React.Fragment>
+                <Header />
+                <Search onSearchSubmit={this.handleSearchSubmit} {...props} />
+                <FiveDaysForecasts
+                  data={this.state.cityData}
+                  cityName={this.state.cityName}
+                  country={this.state.country}
+                  onDaySelected={this.handleDaySelected}
+                  selectedDay={this.state.selectedDay}
+                  isSelected={this.state.isSelected}
+                  {...props}
+                />
+              </React.Fragment>
+            )}
+          />
+        </Switch>
         {/* <Footer /> */}
       </React.Fragment>
     );

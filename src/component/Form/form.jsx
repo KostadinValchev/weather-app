@@ -7,7 +7,7 @@ class Form extends Component {
   state = {
     account: { username: "", password: "", confirmPassword: "" }
   };
-  
+
   handleRegister = e => {
     console.log("Register!");
   };

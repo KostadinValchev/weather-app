@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./search.css";
-import Form from "./form";
 
 class Search extends Component {
   state = {
@@ -10,7 +9,6 @@ class Search extends Component {
     this.setState({ searchField: event.target.value });
   };
   onSearchSubmit = () => {
-    console.log("search");
     this.props.onSearchSubmit(this.state.searchField);
     this.setState({ searchField: "" });
   };

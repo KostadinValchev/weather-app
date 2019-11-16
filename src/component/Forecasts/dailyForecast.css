@@ -7,6 +7,10 @@
   color: #3498db;
 }
 
+div.row {
+  margin-bottom: 45px;
+}
+
 h2,
 p {
   align-self: center;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   render() {
@@ -8,7 +9,7 @@ class Navigation extends Component {
         style={{ backgroundColor: "#212529" }}
       >
         <h5 className="my-0 mr-md-auto font-weight-normal text-light">
-          Yourweather
+          <Link to="/" id="appLogo">Yourweather</Link>
         </h5>
         <nav className="my-2 my-md-0 mr-md-3">
           <a className="p-2 text-light" href="/">
@@ -18,19 +19,23 @@ class Navigation extends Component {
             Menu 2
           </a>
           <a className="p-2 text-light" href="/">
-          Menu 3
+            Menu 3
           </a>
         </nav>
-        <a
+        <button
           className="btn btn-outline-success"
-          href="#/"
           style={{ marginRight: "10px" }}
+          href="#/"
         >
-          Sign up
-        </a>
-        <a className="btn btn-outline-success" href="#/">
-          Register
-        </a>
+          <Link to="/signin" id="btnRegNav">
+            Sign up
+          </Link>
+        </button>
+        <button className="btn btn-outline-success" href="#/">
+          <Link to="/register" id="btnRegNav">
+            Register
+          </Link>
+        </button>
       </div>
     );
   }

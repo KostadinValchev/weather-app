@@ -1,5 +1,5 @@
 .header {
-    margin-top: 40px;
+  margin-top: 40px;
   width: 900px;
   height: 300px;
   display: flex;
@@ -10,4 +10,10 @@
 
 p.lead {
   font-weight: 900;
+}
+
+#btnRegNav,
+#appLogo {
+  text-decoration: none;
+  color: white;
 }
