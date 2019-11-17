@@ -12,6 +12,10 @@ p.lead {
   font-weight: 900;
 }
 
+#dropdown-item:hover {
+ cursor: pointer;
+}
+
 #btnRegNav,
 #appLogo {
   text-decoration: none;

@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import Header from "./component/navigation/header";
 import Search from "./component/Form/search";
 import FiveDaysForecasts from "./component/Forecasts/fiveDaysForecasts";
-import WeatherProvider from "./provider/weatherProvider";
 import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
-import "./App.css";
 import Navigation from "./component/navigation/navigation";
 import { Switch, Route } from "react-router-dom";
-import Footer from "./component/footer";
+// import Footer from "./component/footer";
+import "./App.css";
 
 class App extends Component {
-  constructor() {
-    super();
-    this.weatherProvider = new WeatherProvider();
+  constructor(props) {
+    super(props);
+    this.weatherProvider = props.provider;
+    this.cookies = props.cookies;
   }
   state = {
+    cities: [],
     cityData: [],
     selectedDay: { isSelected: false },
     cityName: "",
@@ -23,10 +24,24 @@ class App extends Component {
     isSelected: false
   };
 
+  componentWillMount() {
+    let defaultCity = this.cookies.getCookie("towns");
+    if (defaultCity) {
+      let cities = defaultCity.split(",");
+      this.weatherProvider
+        .getForecastWeather(cities[0])
+        .then(result => this.setState({ cities, ...result }));
+    }
+  }
+
   handleSearchSubmit = city => {
-    this.weatherProvider
-      .getForecastWeather(city)
-      .then(result => this.setState({ ...result }));
+    // Render error if city is not find
+    this.weatherProvider.getForecastWeather(city).then(result => {
+      let cities = [...this.state.cities];
+      !cities.includes(city) && cities.push(city);
+      this.setState({ cities, ...result });
+      this.cookies.setCookie("towns", city, 30); // ?????
+    });
   };
 
   handleDaySelected = dayName => {
@@ -41,7 +56,11 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navigation />
+        <Navigation
+          cities={this.state.cities}
+          cityName={this.state.cityName}
+          handleSearchSubmit={this.handleSearchSubmit}
+        />
         <Switch>
           <Route path="/signin" render={props => <LoginForm {...props} />} />
           <Route

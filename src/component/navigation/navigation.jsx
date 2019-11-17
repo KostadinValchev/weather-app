@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Dropdown from "./dropdown";
 
 class Navigation extends Component {
   render() {
@@ -9,20 +10,26 @@ class Navigation extends Component {
         style={{ backgroundColor: "#212529" }}
       >
         <h5 className="my-0 mr-md-auto font-weight-normal text-light">
-          <Link to="/" id="appLogo">Yourweather</Link>
+          <Link to="/" id="appLogo">
+            Yourweather
+          </Link>
         </h5>
-        <nav className="my-2 my-md-0 mr-md-3">
+        {/* <nav className="my-2 my-md-0 mr-md-3">
           <a className="p-2 text-light" href="/">
             Menu 1
           </a>
           <a className="p-2 text-light" href="/">
             Menu 2
           </a>
-          <a className="p-2 text-light" href="/">
-            Menu 3
-          </a>
-        </nav>
-        <button
+        </nav> */}
+        {this.props.cityName && (
+          <Dropdown
+            cities={this.props.cities}
+            cityName={this.props.cityName}
+            handleSearchSubmit={this.props.handleSearchSubmit}
+          />
+        )}
+        {/* <button
           className="btn btn-outline-success"
           style={{ marginRight: "10px" }}
           href="#/"
@@ -35,7 +42,7 @@ class Navigation extends Component {
           <Link to="/register" id="btnRegNav">
             Register
           </Link>
-        </button>
+        </button> */}
       </div>
     );
   }
