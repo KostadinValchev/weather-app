@@ -14,7 +14,11 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit }) => {
       >
         {cityName}
       </button>
-      <div className="dropdown-menu" aria-labelledby="dropdownMenu2" style={{backgroundColor: "#212529"}}>
+      <div
+        className="dropdown-menu"
+        aria-labelledby="dropdownMenu2"
+        style={{ backgroundColor: "#212529" }}
+      >
         {cities &&
           cities.map(city => {
             if (city !== cityName) {

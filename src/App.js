@@ -4,8 +4,9 @@ import Search from "./component/Form/search";
 import FiveDaysForecasts from "./component/Forecasts/fiveDaysForecasts";
 import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
+import NotFound from './component/not_found/notFound';
 import Navigation from "./component/navigation/navigation";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 // import Footer from "./component/footer";
 import "./App.css";
 
@@ -40,7 +41,7 @@ class App extends Component {
       let cities = [...this.state.cities];
       !cities.includes(city) && cities.push(city);
       this.setState({ cities, ...result });
-      this.cookies.setCookie("towns", city, 30); // ?????
+      this.cookies.setCookie("towns", city, 30);
     });
   };
 
@@ -67,6 +68,7 @@ class App extends Component {
             path="/register"
             render={props => <RegisterForm {...props} />}
           />
+          <Route path="/not-found" component={NotFound} />
           <Route
             path="/"
             exact
@@ -86,6 +88,7 @@ class App extends Component {
               </React.Fragment>
             )}
           />
+          <Redirect to="/not-found" />
         </Switch>
         {/* <Footer /> */}
       </React.Fragment>

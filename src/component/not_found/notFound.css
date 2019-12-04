@@ -1,0 +1,41 @@
+.not-found-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #343434;
+}
+
+.not-found-container h1 {
+  font-size: 280px;
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: 20px;
+  background: url(https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80) center no-repeat;
+  background-clip: border-box;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.not-found-container a {
+  text-decoration: none;
+  background: #343434;
+  border: 2px solid #28a745;
+  color: #fff;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+#root > div.not-found-container > a {
+  text-decoration: none;
+}
+
+.not-found-container a:hover {
+  color: #fff;
+  background: #28a745;
+}
