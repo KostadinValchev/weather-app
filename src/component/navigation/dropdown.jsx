@@ -1,6 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./dropdown.css";
 
-const Dropdown = ({ cities, cityName, handleSearchSubmit }) => {
+const Dropdown = ({ cities, cityName, handleSearchSubmit, onRemoveCity }) => {
   return (
     <div className="dropdown">
       <button
@@ -23,19 +25,37 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit }) => {
           cities.map(city => {
             if (city !== cityName) {
               return (
-                <button
-                  key={city}
-                  className="dropdown-item"
-                  id="dropdown-item"
-                  type="button"
-                  onClick={() => handleSearchSubmit(city)}
-                  style={{
-                    background: "#212529",
-                    color: "#3498db"
-                  }}
-                >
-                  {city}
-                </button>
+                <div className="city-drop-down" key={city}>
+                  <button
+                    key={city}
+                    className="dropdown-item"
+                    id="dropdown-item"
+                    type="button"
+                    onClick={() => handleSearchSubmit(city)}
+                    style={{
+                      background: "#212529",
+                      color: "#3498db"
+                    }}
+                  >
+                    {city}
+                  </button>
+                  <button
+                    key={city}
+                    className="dropdown-item"
+                    id="dropdown-item"
+                    type="button"
+                    style={{
+                      background: "#212529",
+                      color: "#3498db"
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon="minus-square"
+                      className="city-minus-icon"
+                      onClick={() => onRemoveCity(city)}
+                    />
+                  </button>
+                </div>
               );
             }
           })}

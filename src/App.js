@@ -4,7 +4,7 @@ import Search from "./component/Form/search";
 import FiveDaysForecasts from "./component/Forecasts/fiveDaysForecasts";
 import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
-import NotFound from './component/not_found/notFound';
+import NotFound from "./component/not_found/notFound";
 import Navigation from "./component/navigation/navigation";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import Footer from "./component/footer";
@@ -34,6 +34,15 @@ class App extends Component {
         .then(result => this.setState({ cities, ...result }));
     }
   }
+  componentDidUpdate() {
+    let defaultCity = this.cookies.getCookie("towns");
+    if (defaultCity) {
+      let cities = defaultCity.split(",");
+      this.weatherProvider
+        .getForecastWeather(cities[0])
+        .then(result => this.setState({ cities, ...result }));
+    }
+  }
 
   handleSearchSubmit = city => {
     // Render error if city is not find
@@ -43,6 +52,10 @@ class App extends Component {
       this.setState({ cities, ...result });
       this.cookies.setCookie("towns", city, 30);
     });
+  };
+
+  handleRemoveCity = city => {
+    this.cookies.deleteCookie("towns", city, 30);
   };
 
   handleDaySelected = dayName => {
@@ -60,6 +73,7 @@ class App extends Component {
         <Navigation
           cities={this.state.cities}
           cityName={this.state.cityName}
+          removeCity={this.handleRemoveCity}
           handleSearchSubmit={this.handleSearchSubmit}
         />
         <Switch>

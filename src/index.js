@@ -7,6 +7,7 @@ import "bootstrap-4-react/dist/bootstrap-4-react";
 import * as serviceWorker from "./serviceWorker";
 import WeatherProvider from "./provider/weatherProvider";
 import CookieUtil from "./utility/CookieUtil";
+import "./fontawesome";
 const provider = new WeatherProvider();
 const cookies = new CookieUtil();
 const props = {

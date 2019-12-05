@@ -27,6 +27,7 @@ class Navigation extends Component {
             cities={this.props.cities}
             cityName={this.props.cityName}
             handleSearchSubmit={this.props.handleSearchSubmit}
+            onRemoveCity={this.props.removeCity}
           />
         )}
         {/* <button
