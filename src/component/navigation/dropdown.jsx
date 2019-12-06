@@ -22,7 +22,7 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit, onRemoveCity }) => {
         style={{ backgroundColor: "#212529" }}
       >
         {cities &&
-          cities.map(city => {
+          cities.map((city, index) => {
             if (city !== cityName) {
               return (
                 <div className="city-drop-down" key={city}>
@@ -40,7 +40,7 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit, onRemoveCity }) => {
                     {city}
                   </button>
                   <button
-                    key={city}
+                    key={index}
                     className="dropdown-item"
                     id="dropdown-item"
                     type="button"
@@ -58,6 +58,7 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit, onRemoveCity }) => {
                 </div>
               );
             }
+            return null;
           })}
       </div>
     </div>

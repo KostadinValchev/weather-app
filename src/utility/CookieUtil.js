@@ -4,12 +4,13 @@ class CookieUtil {
       .split(",")
       .filter(e => e !== "");
     if (!currentValues.includes(cvalue)) {
-      let d = new Date();
       currentValues.push(cvalue);
-      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-      let expires = "expires=" + d.toUTCString();
-      document.cookie =
-        cname + "=" + currentValues.join(",") + ";" + expires + ";path=/";
+      let expireTime = this.setCookieExpireTime(exdays);
+      document.cookie = document.cookie = this.buildCookie(
+        cname,
+        currentValues,
+        expireTime
+      );
     }
   }
   getCookie(cname) {
@@ -26,20 +27,23 @@ class CookieUtil {
     }
     return "";
   }
-  deleteCookie(cname, cvalue, exdays) {
+  removeValueFromCookie(cname, cvalue, exdays) {
     let currentValues = this.getCookie(cname)
       .split(",")
       .filter(e => e !== cvalue);
-    this.delete_cookie(cname);
+    this.deleteCookie(cname);
+    let expireTime = this.setCookieExpireTime(exdays);
+    document.cookie = this.buildCookie(cname, currentValues, expireTime);
+  }
+  setCookieExpireTime(exdays) {
     let d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-    let expires = "expires=" + d.toUTCString();
-    document.cookie =
-      cname + "=" + currentValues.join(",") + ";" + expires + ";path=/";
-
-    console.log(currentValues);
+    return "expires=" + d.toUTCString();
   }
-  delete_cookie(name) {
+  buildCookie(cname, values, expireTime) {
+    return cname + "=" + values.join(",") + ";" + expireTime + ";path=/";
+  }
+  deleteCookie(name) {
     document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
   }
 }

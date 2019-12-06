@@ -34,15 +34,6 @@ class App extends Component {
         .then(result => this.setState({ cities, ...result }));
     }
   }
-  componentDidUpdate() {
-    let defaultCity = this.cookies.getCookie("towns");
-    if (defaultCity) {
-      let cities = defaultCity.split(",");
-      this.weatherProvider
-        .getForecastWeather(cities[0])
-        .then(result => this.setState({ cities, ...result }));
-    }
-  }
 
   handleSearchSubmit = city => {
     // Render error if city is not find
@@ -55,7 +46,12 @@ class App extends Component {
   };
 
   handleRemoveCity = city => {
-    this.cookies.deleteCookie("towns", city, 30);
+    this.cookies.removeValueFromCookie("towns", city, 30);
+    let cities = this.cookies
+      .getCookie("towns")
+      .split(",")
+      .filter(cname => cname !== city);
+    this.setState({ cities });
   };
 
   handleDaySelected = dayName => {
