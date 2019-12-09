@@ -7,6 +7,7 @@ import RegisterForm from "./component/Form/registerForm";
 import NotFound from "./component/not_found/notFound";
 import Navigation from "./component/navigation/navigation";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { validate } from "./component/common/validations";
 // import Footer from "./component/footer";
 import "./App.css";
 
@@ -22,7 +23,8 @@ class App extends Component {
     selectedDay: { isSelected: false },
     cityName: "",
     country: "",
-    isSelected: false
+    isSelected: false,
+    errors: ""
   };
 
   componentWillMount() {
@@ -37,6 +39,9 @@ class App extends Component {
 
   handleSearchSubmit = city => {
     // Render error if city is not find
+    const errors = validate(city);
+    this.setState({ errors: errors || "" });
+    if (errors) return;
     this.weatherProvider.getForecastWeather(city).then(result => {
       let cities = [...this.state.cities];
       !cities.includes(city) && cities.push(city);
@@ -85,7 +90,11 @@ class App extends Component {
             render={props => (
               <React.Fragment>
                 <Header />
-                <Search onSearchSubmit={this.handleSearchSubmit} {...props} />
+                <Search
+                  onSearchSubmit={this.handleSearchSubmit}
+                  error={this.state.errors}
+                  {...props}
+                />
                 <FiveDaysForecasts
                   data={this.state.cityData}
                   cityName={this.state.cityName}

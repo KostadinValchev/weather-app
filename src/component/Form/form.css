@@ -12,6 +12,7 @@
 
 .searchBox {
   display: flex;
+  flex-direction: column;
   margin: auto;
   background: #212529;
   padding: 20px;
