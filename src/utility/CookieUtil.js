@@ -1,10 +1,13 @@
+import { capitalizeFirstLetter } from "./stringBuilder";
+
 class CookieUtil {
   setCookie(cname, cvalue, exdays) {
     let currentValues = this.getCookie(cname)
       .split(",")
       .filter(e => e !== "");
-    if (!currentValues.includes(cvalue)) {
-      currentValues.push(cvalue);
+    const capitalizedValue = capitalizeFirstLetter(cvalue);
+    if (!currentValues.includes(capitalizedValue)) {
+      currentValues.push(capitalizedValue);
       let expireTime = this.setCookieExpireTime(exdays);
       document.cookie = document.cookie = this.buildCookie(
         cname,

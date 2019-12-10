@@ -38,15 +38,18 @@ class App extends Component {
   }
 
   handleSearchSubmit = city => {
-    // Render error if city is not find
     const errors = validate(city);
     this.setState({ errors: errors || "" });
     if (errors) return;
     this.weatherProvider.getForecastWeather(city).then(result => {
-      let cities = [...this.state.cities];
-      !cities.includes(city) && cities.push(city);
-      this.setState({ cities, ...result });
-      this.cookies.setCookie("towns", city, 30);
+      if (result) {
+        let cities = [...this.state.cities];
+        !cities.includes(city) && cities.push(city);
+        this.setState({ cities, ...result });
+        this.cookies.setCookie("towns", city, 30);
+      } else {
+        this.setState({ errors: "There is no data on the settlement" });
+      }
     });
   };
 
