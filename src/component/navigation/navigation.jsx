@@ -14,14 +14,6 @@ class Navigation extends Component {
             Yourweather
           </Link>
         </h5>
-        {/* <nav className="my-2 my-md-0 mr-md-3">
-          <a className="p-2 text-light" href="/">
-            Menu 1
-          </a>
-          <a className="p-2 text-light" href="/">
-            Menu 2
-          </a>
-        </nav> */}
         {this.props.cityName && (
           <Dropdown
             cities={this.props.cities}

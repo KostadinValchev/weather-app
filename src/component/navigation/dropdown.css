@@ -4,3 +4,8 @@
 .city-minus-icon {
   margin-right: 10px;
 }
+
+#dropdown-item {
+  text-align: end;
+
+}

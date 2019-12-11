@@ -8,6 +8,7 @@ import NotFound from "./component/not_found/notFound";
 import Navigation from "./component/navigation/navigation";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { validate } from "./component/common/validations";
+import { towns, errorMessages } from "./globalConstants";
 // import Footer from "./component/footer";
 import "./App.css";
 
@@ -28,7 +29,7 @@ class App extends Component {
   };
 
   componentWillMount() {
-    let defaultCity = this.cookies.getCookie("towns");
+    let defaultCity = this.cookies.getCookie(towns);
     if (defaultCity) {
       let cities = defaultCity.split(",");
       this.weatherProvider
@@ -46,17 +47,17 @@ class App extends Component {
         let cities = [...this.state.cities];
         !cities.includes(city) && cities.push(city);
         this.setState({ cities, ...result });
-        this.cookies.setCookie("towns", city, 30);
+        this.cookies.setCookie(towns, city, 30);
       } else {
-        this.setState({ errors: "There is no data on the settlement" });
+        this.setState({ errors: errorMessages.notFoundCity });
       }
     });
   };
 
   handleRemoveCity = city => {
-    this.cookies.removeValueFromCookie("towns", city, 30);
+    this.cookies.removeValueFromCookie(towns, city, 30);
     let cities = this.cookies
-      .getCookie("towns")
+      .getCookie(towns)
       .split(",")
       .filter(cname => cname !== city);
     this.setState({ cities });

@@ -6,6 +6,7 @@ class CookieUtil {
       .split(",")
       .filter(e => e !== "");
     const capitalizedValue = capitalizeFirstLetter(cvalue);
+    console.log(capitalizeFirstLetter)
     if (!currentValues.includes(capitalizedValue)) {
       currentValues.push(capitalizedValue);
       let expireTime = this.setCookieExpireTime(exdays);

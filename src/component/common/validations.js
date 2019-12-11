@@ -1,3 +1,5 @@
+import { errorMessages } from "../../globalConstants";
+
 export function validate(value) {
-  if (value.trim() === "") return "The field cannot be empty";
+  if (value.trim() === "") return errorMessages.emptyInputField;
 }
