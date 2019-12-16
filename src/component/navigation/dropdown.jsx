@@ -29,12 +29,13 @@ const Dropdown = ({ cities, cityName, handleSearchSubmit, onRemoveCity }) => {
                   <button
                     key={city}
                     className="dropdown-item"
-                    id="dropdown-item"
+                    id="dropdown-item1"
                     type="button"
                     onClick={() => handleSearchSubmit(city)}
                     style={{
                       background: "#212529",
-                      color: "#3498db"
+                      color: "#3498db",
+                      cursor: "pointer"
                     }}
                   >
                     {city}

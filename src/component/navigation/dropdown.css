@@ -2,7 +2,15 @@
   display: flex;
 }
 .city-minus-icon {
-  margin-right: 10px;
+  margin-right: 0px;
+}
+
+#dropdown-item {
+  text-align: end;
+}
+
+#dropdown-item1:focus {
+  color:  red;
 }
 
 #dropdown-item {

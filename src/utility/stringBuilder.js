@@ -8,6 +8,7 @@ export function correctDateExpression(date) {
   return date.substring(10, 16);
 }
 
- export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+export function capitalizeFirstLetter(string) {
+  const result = string.charAt(0).toUpperCase() + string.slice(1);
+  return result;
 }

@@ -6,6 +6,7 @@ import LoginForm from "./component/Form/loginForm";
 import RegisterForm from "./component/Form/registerForm";
 import NotFound from "./component/not_found/notFound";
 import Navigation from "./component/navigation/navigation";
+import { capitalizeFirstLetter } from "./utility/stringBuilder";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { validate } from "./component/common/validations";
 import { towns, errorMessages } from "./globalConstants";
@@ -38,13 +39,14 @@ class App extends Component {
     }
   }
 
-  handleSearchSubmit = city => {
-    const errors = validate(city);
+  handleSearchSubmit = data => {
+    const errors = validate(data);
     this.setState({ errors: errors || "" });
     if (errors) return;
-    this.weatherProvider.getForecastWeather(city).then(result => {
+    this.weatherProvider.getForecastWeather(data).then(result => {
       if (result) {
         let cities = [...this.state.cities];
+        const city = capitalizeFirstLetter(data);
         !cities.includes(city) && cities.push(city);
         this.setState({ cities, ...result });
         this.cookies.setCookie(towns, city, 30);

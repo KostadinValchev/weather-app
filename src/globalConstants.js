@@ -6,6 +6,6 @@ export const degreesCelsius = "°C";
 export const towns = "towns";
 
 export const errorMessages = {
-  notFoundCity: "There is no data on the settlement",
+  notFoundCity: "There is no data for this location",
   emptyInputField: "The field cannot be empty"
 };

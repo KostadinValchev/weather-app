@@ -20,7 +20,7 @@ class Search extends Component {
         <div>
           <input
             type="text"
-            placeholder="Find city"
+            placeholder="Search location"
             value={this.state.searchField}
             onChange={this.onSearchChange}
           />
